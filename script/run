@@ -1,0 +1,6 @@
+cd $(dirname $0)/../
+
+docker run \
+    -v $PWD:/var/task \
+    --entrypoint /usr/bin/perl \
+    acceptessa2-mail-sender $@

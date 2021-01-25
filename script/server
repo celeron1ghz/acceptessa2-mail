@@ -1,0 +1,9 @@
+cd $(dirname $0)/../
+
+docker run \
+    -v ~/.aws-lambda-rie:/aws-lambda \
+    -v $PWD:/var/task \
+    -e LAMBDA_TASK_ROOT=/var/task \
+    -p 9000:8080 \
+    --entrypoint /aws-lambda/aws-lambda-rie \
+    acceptessa2-mail-sender /usr/bin/perl -MAWS::Lambda::Bootstrap -e 'bootstrap(@ARGV)' handler.handle

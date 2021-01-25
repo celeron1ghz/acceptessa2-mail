@@ -1,0 +1,5 @@
+cd $(dirname $0)/../
+
+APP=acceptessa2-mail-sender
+
+docker build . -t $APP

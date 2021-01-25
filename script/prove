@@ -1,0 +1,8 @@
+cd $(dirname $0)/../
+
+docker run \
+    -v $PWD:/var/task \
+    -v $HOME/.aws:/root/.aws \
+    -e PAWS_SILENCE_UNSTABLE_WARNINGS=1 \
+    --entrypoint /usr/bin/perl \
+    acceptessa2-mail-sender -MApp::Prove -I/var/task/lib/ -e 'my $app = App::Prove->new; $app->process_args("-Ilib"); exit( $app->run ? 0 : 1 );'
