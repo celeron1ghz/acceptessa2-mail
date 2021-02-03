@@ -1,5 +1,5 @@
 locals {
-  name = "acceptessa2-mail-sender"
+  name = "${local.appid}-mail-sender"
 }
 
 data "aws_region" "current" {}
