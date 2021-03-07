@@ -48,7 +48,7 @@ my @tests = (
         ret => { success => 1 },
     },
     {
-        template  => '<: $test ',
+        template  => '[% $test ',
         expected  => "",
         desc      => 'with error',
         parameter => {
@@ -98,7 +98,7 @@ foreach my $t (@tests) {
 __DATA__
 tmpl1: |
   <!-- subject subject -->
-  <: $hello :> <: $world :>
+  [% $hello %] [% $world %]
 result1: |
   From: from@from
   To: to@to
@@ -111,7 +111,7 @@ result1: |
   bW9nZW1vZ2UgZnVnYWZ1Z2EK
 tmpl2: |
   <!-- subject2 subject2 -->
-  <: $hello :> <: $world :>
+  [% $hello %] [% $world %]
 result2: |
   From: from@from
   To: to@to

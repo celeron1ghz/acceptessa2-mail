@@ -63,7 +63,7 @@ sub run {
 
     ## render template
     my $err;
-    my $tx       = Text::Xslate->new();
+    my $tx       = Text::Xslate->new(syntax => 'Metakolon');
     my $rendered = try {
         $tx->render_string($tmpl, $p->data);
     }
@@ -71,7 +71,10 @@ sub run {
         $err = $_;
     };
 
-    return { error => "template syntax error: $err" } if $err;
+    if ($err) {
+        warn "template syntax error: $err";
+        return { error => "template syntax error: $err" };
+    }
 
     $rendered =~ s/<!--\s*(.*?)\s+-->\r?\n//;    ## subject get from template's first comment
     my $subject = $1;
