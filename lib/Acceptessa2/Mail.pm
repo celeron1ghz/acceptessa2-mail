@@ -44,7 +44,7 @@ sub get_attachment {
 
 sub send_mail {
     my ($self, $mail) = @_;
-    my $ses = Paws->service('SES', region => 'us-east-1');
+    my $ses = Paws->service('SES', region => 'ap-northeast-1');
     my $ret = try {
         return $ses->SendRawEmail(RawMessage => { Data => encode_base64 $mail->as_string });
     }
